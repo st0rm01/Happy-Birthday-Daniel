@@ -10,7 +10,7 @@
 	<meta name="description" content="Happy Birthday">
 	<meta name="robots" content="index, follow" /> 
     <meta name="keywords" content="Birthday, Happy">
-    <!-- Strat of Facebook Meta -->
+    <!-- Start of Facebook Meta -->
     <meta property="og:type" content="E-Greeting" />
     <meta property="og:image" content="favicon.ico" />
     <meta property="og:description" content="Wish you a very Happy Birthday">
@@ -104,50 +104,51 @@
 		<div class="row message">
 			<div class="col-md-12">
 				<p>Today is...</p> 
-                <p>as vibrant as a Romanian festival</p> 
+                <p>a wild Romanian fiesta</p> 
                 <p>but you realize</p> 
-                <p>another year has zoomed by</p> 
-                <p>faster than you checking for Hungarian spies</p> 
+                <p>another year’s gone</p> 
+                <p>faster than you dodging Hungarian goulash</p> 
                 <p><strong>however</strong></p> 
                 <p>Do you know..?</p> 
-                <p>today is all about you, Daniel</p> 
-                <p>so special, even Hungarians might agree</p> 
+                <p>today belongs to you, Daniel</p> 
+                <p>so epic, even Turks might pause their kebabs</p> 
                 <p>that's why</p> 
                 <p>Let's make it...</p> 
-                <p>the best party this side of Bucharest</p> 
+                <p>the greatest party in Transylvania</p> 
                 <p>and let me share...</p> 
-                <p>a slice of joy with you</p> 
-                <p>We’ll hunt for the finest Romanian mămăligă</p> 
-                <p>as your epic birthday gift</p> 
+                <p>a burst of joy with you</p> 
+                <p>We’ll gift you a Dracula cape</p> 
+                <p>to ward off goulash and kebabs</p> 
                 <p>Happy Birthday Daniel</p> 
-                <p>Keep those good vibes, but maybe ease up on the goulash hate</p> 
+                <p>Stop sniffing for Hungarian paprika plots</p> 
+                <p>and Turkish coffee traps</p> 
                 <p>I wish you all the best</p> 
-                <p>May your life be as smooth as sarmale</p> 
-                <p>May all your dreams come true</p> 
+                <p>May your life be as bold as sarmale</p> 
+                <p>May all your dreams soar</p> 
                 <p>Remember</p> 
-                <p>your wild ambitions</p> 
-                <p>you’re a free spirit...</p> 
-                <p>soaring like a hawk over the Carpathians</p> 
-                <p>Now things are different...</p> 
-                <p>the next chapter of your legend</p> 
-                <p>is just about to unfold</p> 
-                <p>indeed..</p> 
+                <p>your fearless spirit</p> 
+                <p>you’re a Romanian legend...</p> 
+                <p>flying free over the Carpathians</p> 
+                <p>Now things are changing...</p> 
+                <p>your epic saga</p> 
+                <p>is ready to shine</p> 
+                <p>indeed...</p> 
                 <p>but...</p> 
-                <p>no worries, my friend</p> 
+                <p>no stress, my friend</p> 
                 <p>because...</p> 
-                <p>I’ve got your back</p> 
+                <p>I’m here for you</p> 
                 <p>and</p> 
-                <p>this year will be epic</p> 
+                <p>this year will be legendary</p> 
                 <p>and I hope</p> 
                 <p>you’ll find...</p> 
-                <p>laughter and love on your path</p> 
-                <p>keep your spirit high</p> 
-                <p>cherish every moment...</p> 
-                <p>of this incredible day</p> 
-                <p>flash that famous Daniel smile</p> 
-                <p>and make it a memory to treasure</p> 
+                <p>laughter and love everywhere</p> 
+                <p>keep that Romanian fire burning</p> 
+                <p>embrace every moment...</p> 
+                <p>of this awesome day</p> 
+                <p>flash that Daniel grin</p> 
+                <p>make it a memory to cherish</p> 
                 <p>lastly...</p> 
-                <p>I’d like to wish you one more time</p> 
+                <p>one more time, my friend</p> 
                 <p>a very happy birthday Daniel</p> 
 			</div>
 		</div>
@@ -176,11 +177,21 @@
 			<div class="col-md-2">
 			</div> -->
 		</div>
-
-
 	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="effect.js"></script>
+<script>
+	// Override message animation speed when "A message for you" button is clicked
+	$(document).ready(function() {
+		$('#story').click(function() {
+			$('.message p').hide(); // Hide all messages initially
+			$('.message').show(); // Show the message container
+			$('.message p').each(function(index) {
+				$(this).delay(1000 * index).fadeIn(500); // 1000ms delay per message
+			});
+		});
+	});
+</script>
 </html>
