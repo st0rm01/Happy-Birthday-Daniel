@@ -1,3 +1,4 @@
+/* Side Fireworks (Unchanged) */
 .fireworks-left, .fireworks-right {
 	position: fixed;
 	bottom: 60px; /* Align with navbar height */
@@ -25,22 +26,58 @@
 
 .firework-particle:nth-child(1) {
 	background-color: #FF4500; /* Orange */
+	width: 8px;
+	height: 8px;
 	animation: firework-burst 2s infinite linear;
 }
 
 .firework-particle:nth-child(2) {
 	background-color: #00FF00; /* Green */
-	animation: firework-burst 2s infinite linear 0.5s;
+	width: 6px;
+	height: 6px;
+	animation: firework-sparkle 2.5s infinite linear 0.3s;
 }
 
 .firework-particle:nth-child(3) {
 	background-color: #1E90FF; /* Blue */
-	animation: firework-burst 2s infinite linear 1s;
+	width: 4px;
+	height: 4px;
+	animation: firework-burst 1.5s infinite linear 0.6s;
 }
 
 .firework-particle:nth-child(4) {
 	background-color: #FF69B4; /* Pink */
-	animation: firework-burst 2s infinite linear 1.5s;
+	width: 6px;
+	height: 6px;
+	animation: firework-sparkle 3s infinite linear 0.9s;
+}
+
+.firework-particle:nth-child(5) {
+	background-color: #800080; /* Purple */
+	width: 8px;
+	height: 8px;
+	animation: firework-burst 2.2s infinite linear 1.2s;
+}
+
+.firework-particle:nth-child(6) {
+	background-color: #FF0000; /* Red */
+	width: 6px;
+	height: 6px;
+	animation: firework-sparkle 2.7s infinite linear 1.5s;
+}
+
+.firework-particle:nth-child(7) {
+	background-color: #FFFF00; /* Yellow */
+	width: 4px;
+	height: 4px;
+	animation: firework-burst 1.8s infinite linear 1.8s;
+}
+
+.firework-particle:nth-child(8) {
+	background-color: #FFD700; /* Gold */
+	width: 6px;
+	height: 6px;
+	animation: firework-sparkle 2.4s infinite linear 2.1s;
 }
 
 @keyframes firework-burst {
@@ -53,41 +90,301 @@
 	}
 	100% {
 		opacity: 0;
-		transform: translate(calc(50px * var(--x-dir)), calc(-50px * var(--y-dir))) scale(0.5);
+		transform: translate(calc(60px * var(--x-dir)), calc(-60px * var(--y-dir))) scale(0.5);
 	}
 }
 
-/* Custom properties for random directions */
+@keyframes firework-sparkle {
+	0% {
+		opacity: 1;
+		transform: translate(0, 0) scale(1);
+	}
+	50% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 0;
+		transform: translate(calc(60px * var(--x-dir)), calc(-60px * var(--y-dir))) scale(0.3);
+	}
+}
+
+/* Custom properties for side fireworks directions */
 .fireworks-left .firework-particle:nth-child(1) {
-	--x-dir: 0.8;
+	--x-dir: 0.9;
 	--y-dir: 1;
 }
 .fireworks-left .firework-particle:nth-child(2) {
-	--x-dir: 1;
-	--y-dir: 0.6;
+	--x-dir: 1.1;
+	--y-dir: 0.7;
 }
 .fireworks-left .firework-particle:nth-child(3) {
-	--x-dir: 0.5;
+	--x-dir: 0.6;
 	--y-dir: 0.9;
 }
 .fireworks-left .firework-particle:nth-child(4) {
+	--x-dir: 0.8;
+	--y-dir: 0.8;
+}
+.fireworks-left .firework-particle:nth-child(5) {
+	--x-dir: 1;
+	--y-dir: 0.5;
+}
+.fireworks-left .firework-particle:nth-child(6) {
 	--x-dir: 0.7;
+	--y-dir: 1.1;
+}
+.fireworks-left .firework-particle:nth-child(7) {
+	--x-dir: 0.5;
 	--y-dir: 0.7;
+}
+.fireworks-left .firework-particle:nth-child(8) {
+	--x-dir: 0.9;
+	--y-dir: 0.6;
 }
 
 .fireworks-right .firework-particle:nth-child(1) {
-	--x-dir: -0.8;
+	--x-dir: -0.9;
 	--y-dir: 1;
 }
 .fireworks-right .firework-particle:nth-child(2) {
-	--x-dir: -1;
-	--y-dir: 0.6;
+	--x-dir: -1.1;
+	--y-dir: 0.7;
 }
 .fireworks-right .firework-particle:nth-child(3) {
-	--x-dir: -0.5;
+	--x-dir: -0.6;
 	--y-dir: 0.9;
 }
 .fireworks-right .firework-particle:nth-child(4) {
+	--x-dir: -0.8;
+	--y-dir: 0.8;
+}
+.fireworks-right .firework-particle:nth-child(5) {
+	--x-dir: -1;
+	--y-dir: 0.5;
+}
+.fireworks-right .firework-particle:nth-child(6) {
 	--x-dir: -0.7;
+	--y-dir: 1.1;
+}
+.fireworks-right .firework-particle:nth-child(7) {
+	--x-dir: -0.5;
 	--y-dir: 0.7;
+}
+.fireworks-right .firework-particle:nth-child(8) {
+	--x-dir: -0.9;
+	--y-dir: 0.6;
+}
+
+/* Full-Screen Fireworks Rain */
+.fireworks-rain {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 998;
+	pointer-events: none; /* Prevent interaction with particles */
+}
+
+.rain-particle {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: #FFD700; /* Gold as base color */
+	opacity: 0;
+	animation: firework-rain var(--duration) infinite linear var(--delay);
+}
+
+.rain-particle:nth-child(1) {
+	left: 5%;
+	background-color: #FF4500; /* Orange */
+	width: 5px;
+	height: 5px;
+	--duration: 2s;
+	--delay: 0s;
+	--x-drift: 20px;
+}
+
+.rain-particle:nth-child(2) {
+	left: 10%;
+	background-color: #00FF00; /* Green */
+	--duration: 2.5s;
+	--delay: 0.2s;
+	--x-drift: -15px;
+}
+
+.rain-particle:nth-child(3) {
+	left: 15%;
+	background-color: #1E90FF; /* Blue */
+	width: 3px;
+	height: 3px;
+	--duration: 1.8s;
+	--delay: 0.4s;
+	--x-drift: 10px;
+}
+
+.rain-particle:nth-child(4) {
+	left: 20%;
+	background-color: #FF69B4; /* Pink */
+	--duration: 2.2s;
+	--delay: 0.6s;
+	--x-drift: -20px;
+}
+
+.rain-particle:nth-child(5) {
+	left: 25%;
+	background-color: #800080; /* Purple */
+	width: 6px;
+	height: 6px;
+	--duration: 2s;
+	--delay: 0.8s;
+	--x-drift: 15px;
+}
+
+.rain-particle:nth-child(6) {
+	left: 30%;
+	background-color: #FF0000; /* Red */
+	--duration: 2.3s;
+	--delay: 1s;
+	--x-drift: -10px;
+}
+
+.rain-particle:nth-child(7) {
+	left: 35%;
+	background-color: #FFFF00; /* Yellow */
+	width: 3px;
+	height: 3px;
+	--duration: 1.9s;
+	--delay: 1.2s;
+	--x-drift: 25px;
+}
+
+.rain-particle:nth-child(8) {
+	left: 40%;
+	background-color: #FFD700; /* Gold */
+	--duration: 2.1s;
+	--delay: 1.4s;
+	--x-drift: -15px;
+}
+
+.rain-particle:nth-child(9) {
+	left: 45%;
+	background-color: #FF4500; /* Orange */
+	width: 5px;
+	height: 5px;
+	--duration: 2s;
+	--delay: 1.6s;
+	--x-drift: 20px;
+}
+
+.rain-particle:nth-child(10) {
+	left: 50%;
+	background-color: #00FF00; /* Green */
+	--duration: 2.4s;
+	--delay: 1.8s;
+	--x-drift: -10px;
+}
+
+.rain-particle:nth-child(11) {
+	left: 55%;
+	background-color: #1E90FF; /* Blue */
+	width: 4px;
+	height: 4px;
+	--duration: 1.7s;
+	--delay: 2s;
+	--x-drift: 15px;
+}
+
+.rain-particle:nth-child(12) {
+	left: 60%;
+	background-color: #FF69B4; /* Pink */
+	--duration: 2.2s;
+	--delay: 2.2s;
+	--x-drift: -20px;
+}
+
+.rain-particle:nth-child(13) {
+	left: 65%;
+	background-color: #800080; /* Purple */
+	width: 5px;
+	height: 5px;
+	--duration: 2s;
+	--delay: 2.4s;
+	--x-drift: 10px;
+}
+
+.rain-particle:nth-child(14) {
+	left: 70%;
+	background-color: #FF0000; /* Red */
+	--duration: 2.3s;
+	--delay: 2.6s;
+	--x-drift: -15px;
+}
+
+.rain-particle:nth-child(15) {
+	left: 75%;
+	background-color: #FFFF00; /* Yellow */
+	width: 3px;
+	height: 3px;
+	--duration: 1.8s;
+	--delay: 2.8s;
+	--x-drift: 20px;
+}
+
+.rain-particle:nth-child(16) {
+	left: 80%;
+	background-color: #FFD700; /* Gold */
+	--duration: 2.1s;
+	--delay: 3s;
+	--x-drift: -10px;
+}
+
+.rain-particle:nth-child(17) {
+	left: 85%;
+	background-color: #FF4500; /* Orange */
+	width: 4px;
+	height: 4px;
+	--duration: 2s;
+	--delay: 3.2s;
+	--x-drift: 15px;
+}
+
+.rain-particle:nth-child(18) {
+	left: 90%;
+	background-color: #00FF00; /* Green */
+	--duration: 2.4s;
+	--delay: 3.4s;
+	--x-drift: -20px;
+}
+
+.rain-particle:nth-child(19) {
+	left: 95%;
+	background-color: #1E90FF; /* Blue */
+	width: 5px;
+	height: 5px;
+	--duration: 1.9s;
+	--delay: 3.6s;
+	--x-drift: 10px;
+}
+
+.rain-particle:nth-child(20) {
+	left: 100%;
+	background-color: #FF69B4; /* Pink */
+	--duration: 2.2s;
+	--delay: 3.8s;
+	--x-drift: -15px;
+}
+
+@keyframes firework-rain {
+	0% {
+		opacity: 0.8;
+		top: -10%;
+		transform: translateX(0);
+	}
+	100% {
+		opacity: 0;
+		top: 100%;
+		transform: translateX(var(--x-drift));
+	}
 }
