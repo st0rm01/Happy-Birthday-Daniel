@@ -177,6 +177,7 @@ $('document').ready(function(){
 					if (i == 47) {
 						$("p:nth-child(47)").css('display', 'none').promise().done(function(){
 							$('.cake').fadeIn('fast');
+							$('.fireworks-rain').fadeIn('slow');
 						});
 					} else {
 						msgLoop(i + 1);
