@@ -1307,6 +1307,14 @@ audio {
   display: none;
 }
 
+.message {
+  position: relative;
+  height: 40px; /* Adjust height to fit one line of text */
+  overflow: hidden; /* Prevent overflow from stacking */
+  margin-top: 200px;
+  display: none;
+}
+
 .message p {
   position: absolute;
   top: 0;
