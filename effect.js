@@ -151,7 +151,6 @@ $('document').ready(function(){
 		});
 	});
 
-		
 	$('#wish_message').click(function(){
 		vw = $(window).width()/2;
 
@@ -177,7 +176,8 @@ $('document').ready(function(){
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#story').fadeIn('slow');
+			$('#story').fadeIn('slow'); // Ensure #story appears
+			console.log("Story button should be visible now");
 		});
 	});
 	
@@ -195,34 +195,28 @@ $('document').ready(function(){
 			if (i > 1) {
 				var $previous = $("p:nth-child(" + (i-1) + ")");
 				$previous.fadeOut('slow').promise().done(function() {
-					$current.css('opacity', '1');
-					if (i == 47) {
-						setTimeout(function() {
+					$current.css('opacity', '1').delay(1500).promise().done(function() {
+						if (i == 47) {
 							$current.fadeOut('slow').promise().done(function(){
 								$('.cake').fadeIn('fast');
 								$('.fireworks-rain').fadeIn('slow');
 							});
-						}, 1500);
-					} else {
-						setTimeout(function() {
+						} else {
 							msgLoop(i + 1);
-						}, 1500);
-					}
+						}
+					});
 				});
 			} else {
-				$current.css('opacity', '1');
-				if (i == 47) {
-					setTimeout(function() {
+				$current.css('opacity', '1').delay(1500).promise().done(function() {
+					if (i == 47) {
 						$current.fadeOut('slow').promise().done(function(){
 							$('.cake').fadeIn('fast');
 							$('.fireworks-rain').fadeIn('slow');
 						});
-					}, 1500);
-				} else {
-					setTimeout(function() {
+					} else {
 						msgLoop(i + 1);
-					}, 1500);
-				}
+					}
+				});
 			}
 		}
 	});
