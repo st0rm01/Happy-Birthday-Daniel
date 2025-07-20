@@ -191,19 +191,39 @@ $('document').ready(function(){
 		
 		function msgLoop(i) {
 			console.log("Showing message " + i + ": ", $("p:nth-child(" + i + ")").text()); // Debug log
+			var $current = $("p:nth-child(" + i + ")");
 			if (i > 1) {
-				$("p:nth-child(" + (i-1) + ")").fadeOut('slow'); // Fade out previous
-			}
-			$("p:nth-child(" + i + ")").css('opacity', '1').delay(1500).promise().done(function(){
+				var $previous = $("p:nth-child(" + (i-1) + ")");
+				$previous.fadeOut('slow').promise().done(function() {
+					$current.css('opacity', '1');
+					if (i == 47) {
+						setTimeout(function() {
+							$current.fadeOut('slow').promise().done(function(){
+								$('.cake').fadeIn('fast');
+								$('.fireworks-rain').fadeIn('slow');
+							});
+						}, 1500);
+					} else {
+						setTimeout(function() {
+							msgLoop(i + 1);
+						}, 1500);
+					}
+				});
+			} else {
+				$current.css('opacity', '1');
 				if (i == 47) {
-					$(this).fadeOut('slow').delay(1200).promise().done(function(){
-						$('.cake').fadeIn('fast');
-						$('.fireworks-rain').fadeIn('slow');
-					});
-				} else if (i < 47) {
-					msgLoop(i + 1); // Proceed to next message
+					setTimeout(function() {
+						$current.fadeOut('slow').promise().done(function(){
+							$('.cake').fadeIn('fast');
+							$('.fireworks-rain').fadeIn('slow');
+						});
+					}, 1500);
+				} else {
+					setTimeout(function() {
+						msgLoop(i + 1);
+					}, 1500);
 				}
-			});
+			}
 		}
 	});
 });
