@@ -1299,7 +1299,12 @@ audio {
         color: #fff;
         background-color: #466baf;
     }
-
+.message p {
+  position: relative;
+  transition: opacity 0.6s ease;
+  transform: none !important; /* Prevent any transform animations */
+  top: 0 !important; /* Reset any top movement */
+}
 
 
     /*controlling tablet width*/
