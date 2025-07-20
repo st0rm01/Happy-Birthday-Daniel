@@ -194,7 +194,7 @@ $('document').ready(function(){
 			if (i > 1) {
 				$("p:nth-child(" + (i-1) + ")").fadeOut('slow'); // Fade out previous
 			}
-			$("p:nth-child(" + i + ")").fadeIn('slow').delay(1500).promise().done(function(){
+			$("p:nth-child(" + i + ")").css('opacity', '1').delay(1500).promise().done(function(){
 				if (i == 47) {
 					$(this).fadeOut('slow').delay(1200).promise().done(function(){
 						$('.cake').fadeIn('fast');
