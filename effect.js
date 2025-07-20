@@ -3,20 +3,20 @@ $(window).load(function(){
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,#b9').stop();
-			$('#b11').animate({top:240, left: vw-360},500);
-			$('#b22').animate({top:240, left: vw-280},500);
-			$('#b33').animate({top:240, left: vw-200},500);
-			$('#b44').animate({top:240, left: vw-120},500);
-			$('#b55').animate({top:240, left: vw-40},500);
-			$('#b66').animate({top:240, left: vw+40},500);
-			$('#b77').animate({top:240, left: vw+120},500);
-			$('#b88').animate({top:240, left: vw+200},500);
-			$('#b99').animate({top:240, left: vw+280},500);
-		});
+	var vw;
+	$(window).resize(function(){
+		vw = $(window).width()/2;
+		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,#b9').stop();
+		$('#b11').animate({top:240, left: vw-360},500);
+		$('#b22').animate({top:240, left: vw-280},500);
+		$('#b33').animate({top:240, left: vw-200},500);
+		$('#b44').animate({top:240, left: vw-120},500);
+		$('#b55').animate({top:240, left: vw-40},500);
+		$('#b66').animate({top:240, left: vw+40},500);
+		$('#b77').animate({top:240, left: vw+120},500);
+		$('#b88').animate({top:240, left: vw+200},500);
+		$('#b99').animate({top:240, left: vw+280},500);
+	});
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -153,7 +153,7 @@ $('document').ready(function(){
 
 		
 	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
+		vw = $(window).width()/2;
 
 		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,#b9').stop();
 		$('#b1').attr('id','b11');
@@ -186,7 +186,7 @@ $('document').ready(function(){
 		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
 			$('.message p').hide(); // Hide all messages initially
-			msgLoop(1); // Start with first message
+			msgLoop(45); // Updated to 45 to match current 45 <p> tags
 		});
 		
 		function msgLoop(i) {
@@ -195,8 +195,8 @@ $('document').ready(function(){
 			}
 			$("p:nth-child(" + i + ")").fadeIn('slow').delay(1500).promise().done(function(){
 				$("p:nth-child(" + i + ")").fadeOut('slow').delay(1200).promise().done(function(){
-					if (i == 47) {
-						$("p:nth-child(47)").css('display', 'none').promise().done(function(){
+					if (i == 45) {
+						$("p:nth-child(45)").css('display', 'none').promise().done(function(){
 							$('.cake').fadeIn('fast');
 							$('.fireworks-rain').fadeIn('slow');
 						});
