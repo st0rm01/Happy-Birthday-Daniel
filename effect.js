@@ -176,7 +176,7 @@ $('document').ready(function(){
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#story').fadeIn('slow'); // Ensure #story appears
+			$('#story').fadeIn('slow');
 			console.log("Story button should be visible now");
 		});
 	});
@@ -185,17 +185,31 @@ $('document').ready(function(){
 		$(this).fadeOut('slow');
 		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
-			$('.message p').hide(); // Hide all messages initially
+			$('.message p').css('display', 'none'); // Use css('display', 'none') instead of .hide()
 			msgLoop(1); // Start with first message
 		});
 		
 		function msgLoop(i) {
-			console.log("Showing message " + i + ": ", $("p:nth-child(" + i + ")").text()); // Debug log
+			console.log("Attempting to show message " + i + ": ", $("p:nth-child(" + i + ")").text()); // Enhanced debug
 			var $current = $("p:nth-child(" + i + ")");
-			if (i > 1) {
-				var $previous = $("p:nth-child(" + (i-1) + ")");
-				$previous.fadeOut('slow').promise().done(function() {
-					$current.css('opacity', '1').delay(1500).promise().done(function() {
+			if ($current.length) { // Check if element exists
+				console.log("Element found for message " + i);
+				if (i > 1) {
+					var $previous = $("p:nth-child(" + (i-1) + ")");
+					$previous.fadeOut('slow').promise().done(function() {
+						$current.fadeIn('slow').delay(1500).promise().done(function() {
+							if (i == 47) {
+								$current.fadeOut('slow').promise().done(function(){
+									$('.cake').fadeIn('fast');
+									$('.fireworks-rain').fadeIn('slow');
+								});
+							} else {
+								msgLoop(i + 1);
+							}
+						});
+					});
+				} else {
+					$current.fadeIn('slow').delay(1500).promise().done(function() {
 						if (i == 47) {
 							$current.fadeOut('slow').promise().done(function(){
 								$('.cake').fadeIn('fast');
@@ -205,18 +219,9 @@ $('document').ready(function(){
 							msgLoop(i + 1);
 						}
 					});
-				});
+				}
 			} else {
-				$current.css('opacity', '1').delay(1500).promise().done(function() {
-					if (i == 47) {
-						$current.fadeOut('slow').promise().done(function(){
-							$('.cake').fadeIn('fast');
-							$('.fireworks-rain').fadeIn('slow');
-						});
-					} else {
-						msgLoop(i + 1);
-					}
-				});
+				console.log("No element found for message " + i);
 			}
 		}
 	});
